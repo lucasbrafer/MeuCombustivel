@@ -1,38 +1,292 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  font-size: 12pt;
+  font-weight: normal;
+  line-height: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html,
+body {
+  background-color: #8b51f5;
+  height: 100vh;
+  width: 100vw;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+footer {
+  background-color: #ffffff;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hidden {
+  display: none;
+}
+
+.customInput input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.semititle {
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  color: #ffffff;
+  font-size: 6vw;
+  font-weight: bold;
+}
+
+.card {
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 2%;
+  position: absolute;
+  top: 65vw;
+  bottom: 0;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cfc8da;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.customInput {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem 0 1rem;
+}
+
+.customInput input {
+  border: 0;
+  text-align: center;
+  border-bottom: 3px solid white;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 10vw;
+  width: 40vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.customInput .large {
+  width: 70vw;
+}
+
+.customInput input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.customInput input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.customInput input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button {
+  font-size: 6vw;
+  padding: 4vw;
+  width: 100%;
+  background-color: #5bc0de;
+  color: #ffffff;
+  font-weight: bold;
+  border: 0 none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: rgb(172, 181, 184);
+  color: #ececec;
+}
+
+.container-center {
+  display: flex;
+  align-items: center;
+}
+
+/* colors */
+.active {
+  color: #fff;
+  background: #9055ff;
+  border: thin solid #8b51f5;
+}
+.active:active {
+  background: #8b51f5;
+  border: thin solid #5e38a5;
+}
+.primary {
+  color: #fff;
+  background: #8b51f5;
+}
+.primary-color {
+  color: #8b51f5;
+}
+.black-primary {
+  color: #444444;
+}
+.primary:active {
+  background: #8b51f5;
+}
+.secondary {
+  color: #000;
+  background: #cddfeb;
+  border: thin solid #bcceda;
+}
+.secondary:active {
+  background: #abbdc9;
+  border: thin solid #9aacb8;
+}
+.success {
+  color: #fff;
+  background: #2a9d8f;
+  border: thin solid #198c7e;
+}
+.success:active {
+  background: #087b6d;
+  border: thin solid #006a5c;
+}
+.warning {
+  color: #000;
+  background: #ffd166;
+  border: thin solid #eec055;
+}
+.warning:active {
+  background: #ddb044;
+  border: thin solid #cca033;
+}
+.danger {
+  color: #fff;
+  background: #ef233c;
+  border: thin solid #de122b;
+}
+.danger:active {
+  background: #cd011a;
+  border: thin solid #bc0009;
+}
+.light {
+  color: #000;
+  background: #edf6f9;
+  border: thin solid #dce5e8;
+}
+.light:active {
+  background: #cbd4d7;
+  border: thin solid #bac3c6;
+}
+.dark {
+  color: #fff;
+  background: #1d3a4e;
+  border: thin solid #0c293d;
+}
+.dark:active {
+  background: #00182c;
+  border: thin solid #00071b;
+}
+
+/* aligments */
+
+.left {
+  margin-left: auto;
+}
+
+.right {
+  margin-right: auto;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* widhts */
+
+.w-100 {
+  width: 100%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+/* spacements */
+.mt1 {
+  margin-top: 1rem;
+}
+.mt2 {
+  margin-top: 2rem;
+}
+.mt3 {
+  margin-top: 3rem;
+}
+.mt4 {
+  margin-top: 4rem;
+}
+.mt5 {
+  margin-top: 5rem;
+}
+.mt6 {
+  margin-top: 6rem;
+}
+.mt7 {
+  margin-top: 7rem;
+}
+.mt8 {
+  margin-top: 8rem;
+}
+
+.mb1 {
+  margin-bottom: 1vh;
+}
+.mb2 {
+  margin-bottom: 2vh;
+}
+
+.pd1 {
+  padding-top: 1vh;
+}
+.pd2 {
+  padding-top: 2vh;
+}
+.pd3 {
+  padding-top: 3vh;
+}
+.pd4 {
+  padding-top: 4vh;
+}
+.pd5 {
+  padding-top: 5vh;
+}
+.pd6 {
+  padding-top: 6vh;
+}
+.pd7 {
+  padding-top: 7vh;
+}
+.pd8 {
+  padding-top: 8vh;
 }
