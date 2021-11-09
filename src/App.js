@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import Button from "./components/Button/Button";
 import TabNavigation from "./components/TabNavigation/TabNavigation";
 import GasPage from "./pages/Gas/Gas";
 import HistoryPage from "./pages/History/History";
