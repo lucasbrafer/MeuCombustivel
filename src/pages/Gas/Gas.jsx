@@ -12,15 +12,19 @@ import "./Gas.css";
 function GasPage(props) {
   const [inFirstPage, setInFirstPage] = useState(true);
 
-  const [alcool, setAlcool] = useState("");
-  const [gas, setGas] = useState("");
+  const [alcool, setAlcool] = useState("0,00");
+  const [gas, setGas] = useState("0,00");
   const [value, setValue] = useState("");
 
   const [bestFuel, setBestFuel] = useState();
 
   const realToNumber = (value) => {
-    let val = value.split(" ")[1].replace(",", ".");
-    return Number(val);
+    try {
+      let val = value.split(" ")[1].replace(",", ".");
+      return Number(val);
+    } catch (e) {
+      return 0;
+    }
   };
 
   const handleBest = () => {
@@ -31,36 +35,60 @@ function GasPage(props) {
 
   const handleBack = () => {
     setInFirstPage(true);
-    setAlcool("");
-    setGas("");
+    setAlcool("0,00");
+    setGas("0,00");
     setBestFuel("");
   };
 
   const handleSetResult = () => {
-    let fueling = JSON.parse(localStorage.getItem("Abastacimentos"));
+    if (
+      !(
+        !value ||
+        value === "0,00" ||
+        value === "0" ||
+        value === "000,00" ||
+        value === "000,0"
+      )
+    ) {
+      let fueling = JSON.parse(localStorage.getItem("Abastacimentos"));
 
-    const dateNow = new Date();
+      const dateNow = new Date();
 
-    const fuelInfo = {
-      valor: value,
-      data:
-        dateNow.getDate() +
-        "/" +
-        dateNow.getMonth() +
-        1 +
-        "/" +
-        dateNow.getFullYear(),
-    };
+      const fuelInfo = {
+        combustivel: bestFuel,
+        valor: value,
+        data:
+          dateNow.getDate() +
+          "/" +
+          (Number(dateNow.getMonth()) + 1) +
+          "/" +
+          dateNow.getFullYear(),
+      };
 
-    if (!fueling) {
-      fueling = [];
+      if (!fueling) {
+        fueling = [];
+      }
+
+      fueling.unshift(fuelInfo);
+
+      localStorage.setItem("Abastacimentos", JSON.stringify(fueling));
+
+      let total = JSON.parse(localStorage.getItem("TotalAbastecido"));
+
+      if (total) {
+        localStorage.setItem(
+          "TotalAbastecido",
+          JSON.stringify(realToNumber(value) + total)
+        );
+      } else {
+        localStorage.setItem(
+          "TotalAbastecido",
+          JSON.stringify(realToNumber(value))
+        );
+      }
+
+      handleBack();
     }
-
-    fueling.unshift(fuelInfo);
-
-    localStorage.setItem("Abastacimentos", JSON.stringify(fueling));
-
-    handleBack();
   };
 
   const FirstPage = () => (
@@ -130,7 +158,12 @@ function GasPage(props) {
         />
       </div>
 
-      <Button onClick={() => handleSetResult()}>Confirmar</Button>
+      <Button
+        onClick={() => handleSetResult()}
+        disable={!value || value === "0,00" || value === "0"}
+      >
+        Confirmar
+      </Button>
     </section>
   );
 

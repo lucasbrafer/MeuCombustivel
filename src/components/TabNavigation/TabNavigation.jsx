@@ -15,13 +15,6 @@ const TabNavigation = ({ clickCallback }) => {
   return (
     <nav className="nav">
       <span
-        id="tab-dashboard"
-        className={state === "dashboard" ? "nav_link nav-active" : "nav_link"}
-        onClick={() => handleSelect("dashboard")}
-      >
-        <span>Dashboard</span>
-      </span>
-      <span
         id="tab-gas"
         className={state === "gas" ? "nav_link nav-active" : "nav_link"}
         onClick={() => handleSelect("gas")}

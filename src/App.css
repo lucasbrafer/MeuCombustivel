@@ -128,6 +128,9 @@ button[disabled] {
 .text-white {
   color: #ffffff;
 }
+.text-danger {
+  color: #de122b;
+}
 .active {
   color: #fff;
   background: #9055ff;

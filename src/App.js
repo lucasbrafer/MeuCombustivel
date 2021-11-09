@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "./components/Button/Button";
 import TabNavigation from "./components/TabNavigation/TabNavigation";
 import GasPage from "./pages/Gas/Gas";
+import HistoryPage from "./pages/History/History";
 
 import "./App.css";
 
@@ -11,9 +12,8 @@ function App() {
 
   return (
     <div className="App">
-      {page === "gas" ? <GasPage>Meu COMPONTE1</GasPage> : null}
-      {page === "dashboard" ? <h1>Meu COMPONTE2</h1> : null}
-      {page === "history" ? <h1>Meu COMPONTE3</h1> : null}
+      {page === "gas" ? <GasPage /> : null}
+      {page === "history" ? <HistoryPage /> : null}
       <TabNavigation clickCallback={(value) => setPage(value)} />
     </div>
   );
