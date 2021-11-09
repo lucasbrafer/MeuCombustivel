@@ -5,6 +5,7 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-input-mask": "^2.0.4",
     "react-scripts": "4.0.3",
     "workbox-background-sync": "^5.1.3",
     "workbox-broadcast-update": "^5.1.3",
